@@ -27,7 +27,8 @@ macro_rules! println_prefix {
     () => {
         { $crate::print!("\n") };
     };
-    ($($prefix:expr)?,$($arg:tt)*)=>{
-        $crate::io::__print_impl(format_args!("{}{}\n",$($prefix)?, format_args!($($arg)*)));
+    ($prefix:expr,$($arg:tt)*)=>{
+        $crate::print!($prefix);
+        $crate::println!($($arg)*);
     }
 }
